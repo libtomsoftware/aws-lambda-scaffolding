@@ -10,13 +10,13 @@ module.exports = {
       authorId
     });
   },
-  book: ({ id }) => {
+  bookById: ({ id }) => {
     return BookModel.findById(id);
   },
   authors: () => {
     return AuthorModel.find({});
   },
-  author: ({ id }) => {
+  authorById: ({ id }) => {
     return AuthorModel.findById(id);
   }
 };

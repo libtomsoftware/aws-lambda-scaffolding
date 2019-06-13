@@ -1,7 +1,7 @@
 const queries = require("../../data/queries");
 const responder = require("../../responder");
 
-function get(req, res) {
+function findAll(req, res) {
   const query = queries.books();
 
   query.exec((error, books) => {
@@ -10,5 +10,5 @@ function get(req, res) {
 }
 
 module.exports = {
-  get
+  findAll
 };

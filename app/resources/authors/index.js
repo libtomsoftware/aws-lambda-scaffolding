@@ -1,6 +1,6 @@
 const queries = require("../../data/queries");
 
-function get(req, res) {
+function findAll(req, res) {
   const query = queries.authors();
 
   query.exec((error, authors) => {
@@ -9,5 +9,5 @@ function get(req, res) {
 }
 
 module.exports = {
-  get
+  findAll
 };

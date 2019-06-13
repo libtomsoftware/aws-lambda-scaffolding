@@ -7,6 +7,46 @@ provider:
   region: eu-west-2
 
 functions:
+  books:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /books
+          method: get
+          cors: true
+
+  book:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /book/{id}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+
+  authors:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /authors
+          method: get
+          cors: true
+
+  author:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /author/{id}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+
   version:
     handler: lambda.handler
     events:

@@ -1,0 +1,24 @@
+{
+  "name": "aws-lambda-scaffolding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.local",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/libtomsoftware/aws-lambda-scaffolding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/libtomsoftware/aws-lambda-scaffolding/issues"
+  },
+  "homepage": "https://github.com/libtomsoftware/aws-lambda-scaffolding#readme",
+  "dependencies": {
+    "aws-serverless-express": "^3.3.6",
+    "express": "^4.17.1"
+  }
+}

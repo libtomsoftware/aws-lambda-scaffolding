@@ -1,0 +1,24 @@
+# docs.serverless.com
+service: aws-lambda-source
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-2
+
+functions:
+  version:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /v1/version
+          method: get
+          cors: true
+
+  echo:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /v1/echo
+          method: post
+          cors: true

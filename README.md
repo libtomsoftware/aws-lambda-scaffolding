@@ -1,1 +1,1 @@
-# aws-lambda-scaffolding
+# footy-auth

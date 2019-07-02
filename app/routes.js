@@ -1,23 +1,19 @@
 const express = require("express");
 const responder = require("./responder");
-const resources = {
-  books: require("./resources/books"),
-  book: require("./resources/book"),
-  authors: require("./resources/authors"),
-  author: require("./resources/author")
-};
+const resources = require("./resources");
+const { account, sessions } = resources;
 
 module.exports = function routes() {
   const routes = new express.Router();
 
-  routes.get("/v1/version", (req, res) => res.send({ version: "1" }));
-  routes.post("/v1/echo", (req, res) => res.send({ ...req.body }));
+  routes.put("/register", account.register);
+  routes.post("/login", account.login);
+  routes.post("/logout", account.logout);
+  routes.post("/update", account.update);
+  routes.post("/reset", account.reset);
+  routes.delete("/remove/:account_id", account.remove);
 
-  routes.get("/books", resources.books.findAll);
-  routes.get("/book/:id", resources.book.findById);
-
-  routes.get("/authors", resources.authors.findAll);
-  routes.get("/author/:id", resources.author.findById);
+  routes.get("/session/:token", sessions.token);
 
   routes.all("*", (req, res) => responder.rejectNotFound(res));
 

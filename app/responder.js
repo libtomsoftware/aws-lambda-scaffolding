@@ -1,15 +1,12 @@
 const CONFIG = require("./config");
 const STATUS_CODE = CONFIG.CONSTANTS.HTTP_CODE;
-const allowedOrigins = [
-  "http://footy.local:3000",
-  "http://localhost:3000",
-  "http://localhost:3001"
-];
+const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
 
 function addHeaders(response, origin) {
   response.headers = {
     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type,Authorization",
+    "Content-Type": "application/json",
     "Access-Control-Allow-Credentials": "true"
   };
 
@@ -29,53 +26,28 @@ function addHeaders(response, origin) {
 
 class Responder {
   rejectUnauthorized(response, origin) {
-    response.statusCode = STATUS_CODE.UNAUTHORIZED;
-
     addHeaders(response, origin);
-
-    response.send({
-      error: "Unauthorized"
-    });
+    response.sendStatus(STATUS_CODE.UNAUTHORIZED);
   }
 
   rejectBadGateway(response, origin) {
-    response.statusCode = STATUS_CODE.BAD_GATEWAY;
-
     addHeaders(response, origin);
-
-    response.send({
-      error: "Bad gateway"
-    });
+    response.sendStatus(STATUS_CODE.BAD_GATEWAY);
   }
 
   rejectConflict(response, origin) {
-    response.statusCode = STATUS_CODE.CONFLICT;
-
     addHeaders(response, origin);
-
-    response.send({
-      error: "conflict"
-    });
+    response.sendStatus(STATUS_CODE.CONFLICT);
   }
 
   rejectNotFound(response, origin) {
-    response.statusCode = STATUS_CODE.NOT_FOUND;
-
     addHeaders(response, origin);
-
-    response.send({
-      error: "Not found"
-    });
+    response.sendStatus(STATUS_CODE.NOT_FOUND);
   }
 
   rejectBadRequest(response, origin) {
-    response.statusCode = STATUS_CODE.BAD_REQUEST;
-
     addHeaders(response, origin);
-
-    response.send({
-      error: "Bad request"
-    });
+    response.sendStatus(STATUS_CODE.BAD_REQUEST);
   }
 
   reject(response, origin, statusCode) {
@@ -86,8 +58,13 @@ class Responder {
     response.send();
   }
 
+  sendSuccess(response, origin) {
+    addHeaders(response, origin);
+    response.sendStatus(STATUS_CODE.OK);
+  }
+
   send(response, origin, data, statusCode) {
-    response.statusCode = statusCode || 200;
+    response.statusCode = statusCode || STATUS_CODE.OK;
 
     addHeaders(response, origin);
 

@@ -1,5 +1,5 @@
 # docs.serverless.com
-service: aws-lambda-source
+service: footy-auth
 
 provider:
   name: aws
@@ -7,58 +7,60 @@ provider:
   region: eu-west-2
 
 functions:
-  books:
-    handler: lambda.handler
+  login:
+    handler: lambda.account
     events:
       - http:
-          path: /books
-          method: get
-          cors: true
-
-  book:
-    handler: lambda.handler
-    events:
-      - http:
-          path: /book/{id}
-          method: get
-          cors: true
-          request:
-            parameters:
-              paths:
-                id: true
-
-  authors:
-    handler: lambda.handler
-    events:
-      - http:
-          path: /authors
-          method: get
-          cors: true
-
-  author:
-    handler: lambda.handler
-    events:
-      - http:
-          path: /author/{id}
-          method: get
-          cors: true
-          request:
-            parameters:
-              paths:
-                id: true
-
-  version:
-    handler: lambda.handler
-    events:
-      - http:
-          path: /v1/version
-          method: get
-          cors: true
-
-  echo:
-    handler: lambda.handler
-    events:
-      - http:
-          path: /v1/echo
+          path: /login
           method: post
           cors: true
+  logout:
+    handler: lambda.account
+    events:
+      - http:
+          path: /logout
+          method: post
+          cors: true
+  register:
+    handler: lambda.account
+    events:
+      - http:
+          path: /register
+          method: put
+          cors: true
+  remove:
+    handler: lambda.account
+    events:
+      - http:
+          path: /remove/{account_id}
+          method: delete
+          cors: true
+          request:
+            parameters:
+              paths:
+                account_id: true
+  update:
+    handler: lambda.account
+    events:
+      - http:
+          path: /update
+          method: post
+          cors: true
+  reset:
+    handler: lambda.account
+    events:
+      - http:
+          path: /reset
+          method: post
+          cors: true
+  session:
+    handler: lambda.account
+    events:
+      - http:
+          path: /session/{token}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                token: true

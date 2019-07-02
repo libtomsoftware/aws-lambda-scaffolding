@@ -1,5 +1,4 @@
 const app = require("../app");
-const CONFIG = require("../app/config");
-const port = CONFIG.APP.ADDRESS.HTTP_PORT;
+const port = process.env.PORT || 5001;
 
 app.listen(port, () => console.log(`App is listening on port ${port}.`));

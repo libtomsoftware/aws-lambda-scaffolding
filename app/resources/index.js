@@ -1,9 +1,9 @@
 const fs = require("fs-extra");
-const resources = [];
+const resources = {};
 
 fs.readdirSync(__dirname).forEach(folder => {
   if (fs.lstatSync(`${__dirname}/${folder}`).isDirectory()) {
-    resources.push(folder);
+    resources[folder] = require(`./${folder}`);
   }
 });
 

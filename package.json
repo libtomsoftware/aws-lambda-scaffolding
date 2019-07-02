@@ -1,5 +1,5 @@
 {
-  "name": "footy-auth",
+  "name": "libtom-aws-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/libtomsoftware/footy-auth.git"
+    "url": "git+https://github.com/libtomsoftware/aws-lambda-scaffolding.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/libtomsoftware/footy-auth/issues"
+    "url": "https://github.com/libtomsoftware/aws-lambda-scaffolding/issues"
   },
-  "homepage": "https://github.com/libtomsoftware/footy-auth#readme",
+  "homepage": "https://github.com/libtomsoftware/aws-lambda-scaffolding#readme",
   "dependencies": {
     "aws-serverless-express": "^3.3.6",
     "cors": "^2.8.5",

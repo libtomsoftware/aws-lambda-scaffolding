@@ -1,5 +1,5 @@
 # docs.serverless.com
-service: footy-auth
+service: libtom-aws-lambda
 
 provider:
   name: aws
